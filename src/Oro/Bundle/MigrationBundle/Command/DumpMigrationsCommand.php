@@ -102,7 +102,7 @@ class DumpMigrationsCommand extends ContainerAwareCommand
                     sprintf('Bundle "%s" is not a known bundle', $bundle)
                 );
             }
-            $this->namespace = str_replace($bundle, 'Entity', $bundles[$bundle]);
+            $this->namespace = substr($bundles[$bundle], 0, strrpos($bundles[$bundle], '\\')) . '\\Entity';
             $this->className = $bundle . 'Installer';
         }
     }
