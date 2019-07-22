@@ -100,6 +100,12 @@ DESCRIPTION
                 webpack continues to watch the changes in any of the resolved files.'
             )
             ->addOption(
+                'progress',
+                'p',
+                InputOption::VALUE_NONE,
+                'Show build progress as a percentage in output (verbose mode).'
+            )
+            ->addOption(
                 'npm-install',
                 'i',
                 InputOption::VALUE_NONE,
@@ -107,7 +113,8 @@ DESCRIPTION
                 'Required when "node_modules" folder is corrupted.'
             )
             ->addUsage('admin.oro --watch')
-            ->addUsage('blank -w')
+            ->addUsage('--progress')
+            ->addUsage('blank -w -p')
             ->addUsage('default')
             ->addUsage('-i');
     }
@@ -153,6 +160,9 @@ DESCRIPTION
         }
         if ($input->getOption('watch')) {
             $command[] = '--watch';
+        }
+        if ($input->getOption('progress')) {
+            $command[] = '--progress';
         }
         $command[] = '--env.symfony='.$input->getOption('env');
         $command[] = '--colors';
