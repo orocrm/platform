@@ -128,6 +128,17 @@ class StringFilterTest extends \PHPUnit\Framework\TestCase
                     'where' => 'field_name LIKE %0%',
                 ],
             ],
+            'CONTAINS_STRING_NULL' => [
+                'input' => [
+                    'data' => [
+                        'type' => TextFilterType::TYPE_CONTAINS,
+                        'value' => null,
+                    ],
+                ],
+                'expected' => [
+                    'where' => '',
+                ],
+            ],
         ];
     }
 
