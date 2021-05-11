@@ -58,7 +58,7 @@ class CreateUserCommand extends Command
             ->addOption('user-email', null, InputOption::VALUE_REQUIRED, 'User email (required)')
             ->addOption('user-firstname', null, InputOption::VALUE_REQUIRED, 'User first name')
             ->addOption('user-lastname', null, InputOption::VALUE_REQUIRED, 'User last name')
-            ->addOption('user-password', null, InputOption::VALUE_REQUIRED, 'User password (required)')
+            ->addOption('user-password', null, InputOption::VALUE_OPTIONAL, 'User password (password will be generated if ommited)')
             ->addOption(
                 'user-organizations',
                 null,
@@ -100,8 +100,7 @@ class CreateUserCommand extends Command
         $requiredOptions = [
             'user-business-unit',
             'user-name',
-            'user-email',
-            'user-password'
+            'user-email'
         ];
 
         foreach ($requiredOptions as $requiredOption) {
@@ -126,6 +125,8 @@ class CreateUserCommand extends Command
 
         if (!empty($options['user-password'])) {
             $user->setPlainPassword($options['user-password']);
+        } else {
+            $user->setPlainPassword($this->userManager->generatePassword());
         }
 
         $this
