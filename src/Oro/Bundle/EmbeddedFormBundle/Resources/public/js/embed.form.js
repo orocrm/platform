@@ -78,10 +78,11 @@ var ORO = (function(ORO) {
                     }
 
                     realTag = document.createElement('script');
+                    for (var i = 0; i < scripts[k].attributes.length; i++) {
+                        realTag.setAttribute(scripts[k].attributes[i].name, scripts[k].attributes[i].value);
+                    }
 
-                    if (scripts[k].hasAttribute('src')) {
-                        realTag.setAttribute('src', scripts[k].getAttribute('src'));
-                    } else {
+                    if (!scripts[k].hasAttribute('src')) {
                         realTag.innerHTML = scripts[k].innerHTML;
                     }
 
