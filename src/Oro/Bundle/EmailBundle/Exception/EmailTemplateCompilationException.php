@@ -14,7 +14,10 @@ class EmailTemplateCompilationException extends EmailTemplateException
      */
     public function __construct(EmailTemplateCriteria $criteria)
     {
-        $message = sprintf('Could not found one email template with "%s" name', $criteria->getName());
+        $message = sprintf(
+            'Compilation error during rendering template "%s". Please look at the log file for more details.',
+            $criteria->getName()
+        );
 
         if ($criteria->getEntityName()) {
             $message = sprintf('%s for "%s" entity', $message, $criteria->getEntityName());
