@@ -110,6 +110,23 @@ class EntityMetadataHelper
     }
 
     /**
+     * Gets an entity table column name by entity name and field name
+     *
+     * @param string $className
+     * @param string $fieldName
+     * @return string|null
+     */
+    public function getColumnNameByFieldName($className, $fieldName)
+    {
+        $manager = $this->doctrine->getManagerForClass($className);
+        if ($manager instanceof EntityManager) {
+            return $manager->getClassMetadata($className)->getColumnName($fieldName);
+        }
+
+        return null;
+    }
+
+    /**
      * Adds a mapping between a table name and entity class name.
      * This method can be used for new entities without doctrine mapping created during
      * loading migrations, for instance for custom entities.

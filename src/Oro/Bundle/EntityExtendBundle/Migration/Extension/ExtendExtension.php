@@ -946,6 +946,19 @@ class ExtendExtension implements NameGeneratorAwareInterface
     }
 
     /**
+     * Gets a field name by a table name and a column name
+     *
+     * @param string $className
+     * @param string $fieldName
+     *
+     * @return string|null
+     */
+    public function getColumnNameByFieldName($className, $fieldName)
+    {
+        return $this->entityMetadataHelper->getColumnNameByFieldName($className, $fieldName);
+    }
+
+    /**
      * @param Table|string $table A Table object or table name
      *
      * @return string
