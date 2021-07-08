@@ -17,3 +17,9 @@ integrations:
                         oro.integration.integration.remote_wins.label: remote
                         oro.integration.integration.local_wins.label: local
                 applicable: "@oro_integration.utils.form_utils->hasTwoWaySyncConnectors($channelType$)"
+            logWarnings:
+                type: Symfony\Component\Form\Extension\Core\Type\CheckboxType
+                options:
+                    label: oro.integration.integration.log_warnings.label
+                    tooltip: oro.integration.integration.log_warnings.tooltip
+                    required: false

@@ -291,13 +291,18 @@ class SyncProcessor extends AbstractSyncProcessor
             if ($errors) {
                 $warningsText = 'Some entities were skipped due to warnings:' . PHP_EOL;
                 $warningsText .= implode(PHP_EOL, $errors);
-
                 $message .= PHP_EOL . $warningsText;
+
+                if ($integration->getSynchronizationSettings()->offsetGetOr('logWarnings', false)) {
+                    foreach ($errors as $error) {
+                        $this->logger->error($error);
+                    }
+                }
             }
 
             $status->setCode(Status::STATUS_COMPLETED)->setMessage($message);
         } else {
-            $this->logger->error('Errors were occurred:');
+            $this->logger->error('Errors have occurred:');
             $exceptions = implode(PHP_EOL, $exceptions);
 
             $this->logger->error($exceptions);

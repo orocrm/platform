@@ -39,6 +39,8 @@ oro:
             sync_priority.tooltip: >
                 Select if your local version of the data or the remote application
                 data get priority in the case that both were updated since the last sync process.
+            log_warnings.label: Log warnings as errors
+            log_warnings.tooltip: Select if you want warnings during sync to be logged as if they were errors.
             remote_wins.label: Remote wins
             local_wins.label: Local wins
             default_user_owner.label: Default owner
