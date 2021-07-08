@@ -90,7 +90,7 @@ class EmailEntityBatchProcessor implements EmailEntityBatchInterface
      */
     public function addAddress(EmailAddress $obj)
     {
-        $key = strtolower($obj->getEmail());
+        $key = transliterator_transliterate('Any-Latin;Latin-ASCII;Lower;', $obj->getEmail());
         if (isset($this->addresses[$key])) {
             throw new \LogicException(sprintf('The email address "%s" already exists in the batch.', $obj->getEmail()));
         }
