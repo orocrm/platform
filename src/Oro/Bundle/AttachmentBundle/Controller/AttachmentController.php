@@ -63,7 +63,7 @@ class AttachmentController extends AbstractController
         $entityRoutingHelper = $this->getEntityRoutingHelper();
 
         $entity      = $entityRoutingHelper->getEntity($entityClass, $entityId);
-        $entityClass = get_class($entity);
+        $parentEntityClass = get_class($entity);
 
         $attachmentEntity = new Attachment();
         $attachmentEntity->setTarget($entity);
@@ -71,7 +71,7 @@ class AttachmentController extends AbstractController
         $form       = $this->createForm(
             AttachmentType::class,
             $attachmentEntity,
-            ['parentEntityClass' => $entityClass, 'checkEmptyFile' => true]
+            ['parentEntityClass' => $parentEntityClass, 'checkEmptyFile' => true]
         );
 
         $formAction = $entityRoutingHelper->generateUrlByRequest(
