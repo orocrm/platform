@@ -54,7 +54,7 @@ class MigrateTranslationDataQuery extends ParametrizedMigrationQuery
             //In cases when we have Case Insensitive characterset for `key` column
             $queries[] = [
                 'ALTER TABLE `oro_translation` MODIFY COLUMN `key`  varchar(255) ' .
-                    'CHARACTER SET utf8 COLLATE utf8_bin NOT NULL AFTER `id`;',
+                    'CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL AFTER `id`;',
                 [],
                 [],
             ];

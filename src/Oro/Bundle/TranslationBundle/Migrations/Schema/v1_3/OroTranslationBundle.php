@@ -44,8 +44,8 @@ class OroTranslationBundle implements Migration, OrderedMigrationInterface
         /**
          * Required to support Case Sensitive keys in MySQL
          */
-        $table->addOption('charset', 'utf8');
-        $table->addOption('collate', 'utf8_bin');
+        $table->addOption('charset', 'utf8mb4');
+        $table->addOption('collate', 'utf8mb4_bin');
     }
 
     /**
