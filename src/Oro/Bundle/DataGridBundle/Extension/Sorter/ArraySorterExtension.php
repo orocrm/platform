@@ -73,6 +73,10 @@ class ArraySorterExtension extends AbstractSorterExtension
      */
     protected function safeStringConvert($value)
     {
+        if ($value instanceof \DateTime) {
+            $value = $value->getTimestamp();
+        }
+
         return iconv('utf-8', 'ascii//TRANSLIT', strtolower((string)$value));
     }
 }
