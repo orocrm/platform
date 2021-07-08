@@ -211,12 +211,17 @@ class Manager
     /**
      * Find active dashboard or default dashboard
      *
-     * @param User $user
+     * @param User|null $user
      *
      * @return DashboardModel|null
      */
-    public function findUserActiveOrDefaultDashboard(User $user)
+    public function findUserActiveOrDefaultDashboard(?User $user)
     {
+        // No user, no way to determine dashboard. Even findDefaultDashboard requires proper user token.
+        if ($user === null) {
+            return null;
+        }
+        
         $activeDashboard = $this->findUserActiveDashboard($user);
         return $activeDashboard ? $activeDashboard : $this->findDefaultDashboard();
     }
