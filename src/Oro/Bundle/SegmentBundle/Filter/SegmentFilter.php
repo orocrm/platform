@@ -108,6 +108,7 @@ class SegmentFilter extends EntityFilter
                 [],
                 [
                     'csrf_protection' => false,
+                    'validation_groups' => false,
                     'field_options'   => [
                         'class'         => 'OroSegmentBundle:Segment',
                         'choice_label'  => 'name',
