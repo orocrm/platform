@@ -168,7 +168,7 @@ class ActivityListIdProvider
             $this->getListDataIdsForInheritances($getIdsQb, $entityClass, $entityId, $filter, $pageFilter)
         );
 
-        $this->sortListDataIds($ids, $pageFilter, $orderBy);
+        $ids = $this->sortListDataIds($ids, $pageFilter, $orderBy);
 
         $numberOfUnfilteredIds = count($ids);
         if ($grouping) {
