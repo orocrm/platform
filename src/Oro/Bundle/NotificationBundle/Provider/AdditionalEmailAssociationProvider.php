@@ -70,8 +70,11 @@ class AdditionalEmailAssociationProvider implements AdditionalEmailAssociationPr
      */
     public function getAssociationValue($entity, string $associationName)
     {
-        return $this->getEntityMetadata(ClassUtils::getClass($entity))
-            ->getFieldValue($entity, $associationName);
+        $propertyAccessor = new PropertyAccessor();
+
+        return $propertyAccessor->isReadable($entity, $associationName)
+            ? $propertyAccessor->getValue($entity, $associationName)
+            : null;
     }
 
     /**
