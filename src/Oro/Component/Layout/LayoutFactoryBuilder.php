@@ -167,7 +167,7 @@ class LayoutFactoryBuilder implements LayoutFactoryBuilderInterface
         // initialize extension manager
         $registry = new LayoutRegistry();
         foreach ($this->extensions as $extension) {
-            $registry->addExtension($extension);
+            $registry->addExtension(clone $extension);
         }
         if (!empty($this->types) || !empty($this->typeExtensions) || !empty($this->layoutUpdates)) {
             $registry->addExtension(
