@@ -198,7 +198,9 @@ class WorkflowEntityValidator extends ConstraintValidator
     {
         $fieldValue = $this->propertyAccessor->getValue($object, $restriction['field']);
         if (is_object($fieldValue)) {
-            $fieldValue = $this->doctrineHelper->getSingleEntityIdentifier($fieldValue);
+            $fieldValue = $this->doctrineHelper->isManageableEntity($fieldValue) ?
+                $this->doctrineHelper->getSingleEntityIdentifier($fieldValue) :
+                (string)$fieldValue;
         }
 
         if ($restriction['mode'] === 'allow') {
