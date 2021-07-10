@@ -631,7 +631,7 @@
         {% set linkParams = linkParams|merge({ 'data': data }) %}
     {% endif %}
     {% if parameters.dataRedirect is defined %}
-        {% set data = linkParams.data|merge({'redirect': parameters.dataRedirect}) %}
+        {% set data = linkParams.data|merge({'redirect': oro_url_add_query(parameters.dataRedirect)}) %}
         {% set linkParams = linkParams|merge({ 'data': data }) %}
     {% endif %}
     {% if parameters.data is defined %}
